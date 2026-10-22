@@ -1,26 +1,251 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-app: #0b0b10;
+  --color-surface: #101017;
+  --color-card: #15151d;
+  --color-elevated: #1c1c27;
+  --color-input: #111119;
+  --color-brand: #8b5cf6;
+  --color-brand-hover: #7c3aed;
+  --color-brand-soft: #a78bfa;
+  --color-brand-tint: #251b3b;
+  --color-ink: #f5f5fa;
+  --color-ink-secondary: #a1a1b3;
+  --color-ink-muted: #8a8a9e;
+  --color-line: #292936;
+  --color-line-strong: #3a3a4b;
+  --color-line-subtle: #22222d;
+  --color-success: #22c55e;
+  --color-success-bg: #10251a;
+  --color-warning: #f59e0b;
+  --color-warning-bg: #2a2111;
+  --color-danger: #f87171;
+  --color-danger-bg: #301719;
+  --color-info: #60a5fa;
+  --color-info-bg: #15243a;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+
+  --radius-control: 8px;
+  --radius-input: 10px;
+  --radius-card: 14px;
+  --radius-panel: 20px;
+
+  --text-display: 3.5rem;
+  --text-display--line-height: 1.08;
+  --text-display--font-weight: 700;
+  --text-display--letter-spacing: -0.03em;
+  --text-section: 2.25rem;
+  --text-section--line-height: 1.2;
+  --text-section--font-weight: 600;
+  --text-section--letter-spacing: -0.02em;
+  --text-page: 1.75rem;
+  --text-page--line-height: 1.25;
+  --text-page--font-weight: 600;
+  --text-page--letter-spacing: -0.02em;
+  --text-card: 1rem;
+  --text-card--line-height: 1.4;
+  --text-card--font-weight: 600;
+  --text-metric: 2rem;
+  --text-metric--line-height: 1.1;
+  --text-metric--font-weight: 700;
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+  --text-support: 0.875rem;
+  --text-support--line-height: 1.5;
+  --text-caption: 0.8125rem;
+  --text-caption--line-height: 1.5;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    color-scheme: dark;
+  }
+
+  * {
+    border-color: var(--color-line);
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-line-strong) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    border-radius: 9999px;
+    background-color: var(--color-line-strong);
+    background-clip: padding-box;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-ink-muted);
+  }
+
+  body {
+    background-color: var(--color-app);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-brand-tint);
+    color: var(--color-ink);
+  }
+
+  :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-brand-soft);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .container-page {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+
+  .container-dash {
+    width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-page,
+    .container-dash {
+      padding-inline: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-page,
+    .container-dash {
+      padding-inline: 2rem;
+    }
+  }
+
+  .display-1 {
+    font-size: 2.25rem;
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  @media (min-width: 768px) {
+    .display-1 {
+      font-size: 2.75rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .display-1 {
+      font-size: 3.5rem;
+    }
+  }
+
+  .heading-section {
+    font-size: 1.75rem;
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  @media (min-width: 768px) {
+    .heading-section {
+      font-size: 2.25rem;
+    }
+  }
+
+  .heading-page {
+    font-size: 1.75rem;
+    line-height: 1.25;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .heading-card {
+    font-size: 1rem;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+
+  .body-text {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .support-text {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-ink-secondary);
+  }
+
+  .label-text {
+    font-size: 0.875rem;
+    line-height: 1.4;
+    font-weight: 500;
+    color: var(--color-ink-secondary);
+  }
+
+  .metric-value {
+    font-size: 2rem;
+    line-height: 1.1;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .glow-hero {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .glow-hero::before {
+    position: absolute;
+    inset: -20% -10% auto;
+    z-index: -1;
+    height: 480px;
+    background: radial-gradient(
+      50% 50% at 50% 0%,
+      rgb(139 92 246 / 0.16),
+      transparent 70%
+    );
+    pointer-events: none;
+    content: "";
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
