@@ -27,7 +27,7 @@
 ### Text
 - Primary text: #F5F5FA
 - Secondary text: #A1A1B3
-- Muted text: #737387
+- Muted text: #8A8A9E (>=4.5:1 on app, surface, card, and elevated)
 - Text on primary button: #FFFFFF
 
 ### Borders
@@ -83,7 +83,7 @@ Avoid mixing unrelated radius values within the same interface.
 ## 6. Component Styling
 
 ### Buttons
-- Primary: violet background with white text
+- Primary: accessible violet background (#7C3AED) with white text (5.7:1)
 - Secondary: charcoal background with neutral border
 - Ghost: transparent background with hover surface
 - Destructive: red styling, used only for destructive actions
