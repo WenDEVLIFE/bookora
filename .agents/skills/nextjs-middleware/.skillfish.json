@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "nextjs-middleware",
+  "owner": "josiahsiegel",
+  "repo": "claude-plugin-marketplace",
+  "path": "plugins/nextjs-master/skills/nextjs-middleware",
+  "branch": "main",
+  "sha": "c0c3c3efe8c7283f544674c699ade3bcfc21a4c4",
+  "source": "manual"
+}
